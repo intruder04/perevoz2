@@ -1,0 +1,28 @@
+{
+  "name": "perevoz2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon --watch server --exec babel-node -- server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intruder04/perevoz2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intruder04/perevoz2/issues"
+  },
+  "homepage": "https://github.com/intruder04/perevoz2#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "express": "^4.16.2",
+    "nodemon": "^1.17.1"
+  },
+  "dependencies": {}
+}
