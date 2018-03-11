@@ -26,7 +26,7 @@ module.exports = {
     },
     output: {
         path : path.join(__dirname, 'src/js'),
-        filename : 'bundle.min.js'
+        filename : 'bundle.min.js',
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
