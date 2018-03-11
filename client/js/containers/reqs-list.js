@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {selectReq} from '../actions/index';
 
-
 class ReqList extends Component {
     showList(){
         return this.props.req.map((req) => {

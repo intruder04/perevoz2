@@ -8,17 +8,15 @@ module.exports = {
         port: 3000
     },
     devtool: 'cheap-module-eval-source-map',
-    entry: './code/js/index.js',
+    entry: [
+        'webpack-hot-middleware/client', './client/js/index.js'
+    ],
     module: {
         loaders: [
             {
-                test: /\.json$/,
-                loader: "json-loader"
-            },
-            {
                 test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
+                loaders: ["babel-loader"],
+                include: path.join(__dirname, 'client'),
             },
             {
                 test: /\.scss/,
@@ -27,11 +25,14 @@ module.exports = {
         ]
     },
     output: {
-        path: 'src',
-        filename: 'js/bundle.min.js'
+        path : path.join(__dirname, 'src/js'),
+        filename : 'bundle.min.js'
     },
     plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.NoErrorsPlugin(),
+        
     ],
     // node : {
     //     fs: 'empty',
