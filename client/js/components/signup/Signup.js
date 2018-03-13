@@ -1,15 +1,22 @@
 import React from 'react';
-import {hot} from 'react-hot-loader';
-
+import {connect} from 'react-redux';
+import SignupForm from './SignupForm';
+import {userSignupRequest} from  '../../actions/signupActions';
 
 class Signup extends React.Component {
     render() {
+        const {userSignupRequest} = this.props;
         return (
-            <div className="jumbotron">
-                <h1>Signup</h1>
+            <div className="row">
+                <div className="col-md-4 col-md-offset-4"></div>
+                <SignupForm userSignupRequest={userSignupRequest}/>
             </div>
         );
     }
 }
 
-export default hot(module)(Signup);
+Signup.propTypes = {
+    userSignupRequest: React.PropTypes.func.isRequired
+}
+
+export default connect(null, { userSignupRequest })(Signup);
