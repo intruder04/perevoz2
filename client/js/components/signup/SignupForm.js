@@ -1,6 +1,7 @@
 import React from 'react';
 import Timezones from '../../data/timezones';
 import map from 'lodash/map';
+import classnames from 'classnames';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -10,7 +11,9 @@ class SignupForm extends React.Component {
             password: '',
             passwordConfirmation: '',
             email: '',
-            timezone: ''
+            timezone: '',
+            errors: {},
+            isLoading: false
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -19,12 +22,19 @@ class SignupForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
     onSubmit(e) {
+        this.setState({ errors: {}, isLoading: true });
         e.preventDefault();
-        this.props.userSignupRequest(this.state);
+        this.props.userSignupRequest(this.state).then(
+            () => {},
+            () => this.setState({isLoading: false})
+        ).catch((error) => {
+          this.setState({ errors: error.response.data})
+        });
         console.log(this.state);
     }
 
     render() {
+        const { errors } = this.state;
         const timeZoneOptions = map(Timezones, (val, key) => 
             <option key={val} value={val}>{key}</option>
                  );
@@ -32,8 +42,9 @@ class SignupForm extends React.Component {
            <form onSubmit={this.onSubmit}>
                <h1>Hey</h1>
                     <div className="form-group">
-                        <label className="control-label">Username</label>
-                        <input value={this.state.username} onChange={this.onChange} type="text" name="username" className="form-control"/>
+                        <label className={classnames("contol-label", {'text-danger':errors.username})}>Username</label>
+                        <input value={this.state.username} onChange={this.onChange} type="text" name="username" className={classnames("form-control", {'is-invalid':errors.username})}/>
+                        {errors.username  && <span className='help-block text-danger'>{errors.username}</span>}
                     </div>
                     <div className="form-group">
                         <label className="control-label">Password</label>
@@ -55,7 +66,7 @@ class SignupForm extends React.Component {
                         <input value={this.state.email} onChange={this.onChange} type="text" name="email" className="form-control"/>
                     </div>
                <div className="form-group">
-               <button className="btn btn-primary btn-lg">Sign up</button>
+               <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Sign up</button>
                </div>
            </form>
         );
