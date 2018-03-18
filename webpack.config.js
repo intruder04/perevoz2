@@ -16,7 +16,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 loaders: ["babel-loader"],
-                include: path.join(__dirname, 'client'),
+                include: [
+                    path.join(__dirname, 'client'),
+                    path.join(__dirname, 'server/shared'),
+                    ],
             },
             {
                 test: /\.scss/,
