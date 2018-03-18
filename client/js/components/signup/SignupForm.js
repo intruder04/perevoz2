@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import validateInput from '../../../../server/shared/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
+import browserHistory from 'react-router-dom';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class SignupForm extends React.Component {
         const { errors, isValid } = validateInput(this.state);
         if (!isValid) {
             this.setState({ errors });
+            console.log('not valid on client side');
         }
         return isValid;
     }
@@ -38,11 +40,11 @@ class SignupForm extends React.Component {
         if (this.isValid()) {
             this.setState({ errors: {}, isLoading: true });
             this.props.userSignupRequest(this.state).then(
-                () => {},
+                () => {
+                    this.props.history.push('/');
+                },
                 () => this.setState({isLoading: false})
-            ).catch((error) => {
-            this.setState({ errors: error.response.data})
-            });
+            );
             console.log(this.state);
         }
     }
@@ -99,7 +101,7 @@ class SignupForm extends React.Component {
                     </div>
                    
                <div className="form-group">
-               <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Sign up</button>
+               <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Зарегистрироваться</button>
                </div>
            </form>
         );

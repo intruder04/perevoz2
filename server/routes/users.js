@@ -3,12 +3,13 @@ import validateInput from '../shared/validations/signup';
 
 let router = express.Router();
 
-
-
 router.post('/', (req, res) => {
     const { errors, isValid } = validateInput(req.body);
+    console.log('in server after signup validation');
 
-    if (!isValid) {
+    if (isValid) {
+        res.json({success: true});
+    } else {
         res.status(400).json(errors);
     }
 });
