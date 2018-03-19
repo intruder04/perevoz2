@@ -34,6 +34,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^4.0.0",
+    "shortid": "^2.2.8",
     "style-loader": "^0.13.1",
     "validator": "^9.4.1",
     "webpack": "^1.13.1",
