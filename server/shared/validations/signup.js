@@ -5,25 +5,25 @@ export default function validateInput(data) {
     let errors = {};
 
     if (Validator.isEmpty(data.email)) {
-        errors.email = 'This field is required'
+        errors.email = 'Укажите email адрес'
     }
     if (!Validator.isEmail(data.email)) {
-        errors.email = 'Email is invalid';
+        errors.email = 'Формат email не верный';
     }
     if (Validator.isEmpty(data.username)) {
-        errors.username = 'This field is required'
+        errors.username = 'Укажите имя пользователя'
     }
     if (Validator.isEmpty(data.timezone)) {
-        errors.timezone = 'This field is required'
+        errors.timezone = 'Укажите временную зону'
     }
     if (Validator.isEmpty(data.password)) {
-        errors.password = 'This field is required'
+        errors.password = 'Укажите пароль'
     }
     if (Validator.isEmpty(data.passwordConfirmation)) {
-        errors.passwordConfirmation = 'This field is required';
+        errors.passwordConfirmation = 'Подтверждение пароля обязательно';
     }
     if (!Validator.equals(data.password, data.passwordConfirmation)) {
-        errors.passwordConfirmation = 'Passwords do not match';
+        errors.passwordConfirmation = 'Пароли не совпадают';
     }
 
     return {

@@ -98,12 +98,14 @@ class SignupForm extends React.Component {
                     />
 
                     <div className="form-group">
-                        <label className="control-label">Часовой пояс</label>
-                        <select value={this.state.timezone} onChange={this.onChange} type="text" name="timezone" className="form-control">
+                        <label className={classnames("contol-label", {'text-danger': errors.timezone})}>Часовой пояс</label>
+                        <select value={this.state.timezone} onChange={this.onChange} type="text" name="timezone" className={classnames("form-control", {'is-invalid': errors.timezone})}>
                         <option value="" disabled>Выберите временную зону</option>
                         {timeZoneOptions}
                         </select>
+                        {errors.timezone && <span className='help-block text-danger'>{errors.timezone}</span>}
                     </div>
+                    
                    
                <div className="form-group">
                <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Зарегистрироваться</button>
