@@ -9,7 +9,6 @@ import Greetings from './components/Greetings'
 import Signup from './components/signup/Signup'
 import rootReducer from './rootReducer';
 
-// const store = createStore(allReducers);
 const store = createStore(
   rootReducer,
   compose(
@@ -19,22 +18,23 @@ const store = createStore(
   
 );
 
+
 render (
   <Provider store={store}>
     <Router>
       <App>
         <Switch>
-          <Route path="/hi" component={Greetings} />
+          <Route exact path='/' component={Greetings} />
           <Route path="/signup" component={Signup} />
         </Switch>
       </App>
     </Router>
   </Provider>,
-  document.getElementById('fieldToShow')
+  document.getElementById('main')
 );
 
-if (module.hot) {
-  module.hot.accept(function() {
-   console.log('Accepting the updated module!');
-    })
-}
+// if (module.hot) {
+//   module.hot.accept(function() {
+//    console.log('Accepting the updated module!');
+//     })
+// }
