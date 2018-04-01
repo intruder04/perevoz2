@@ -17,10 +17,12 @@ class SignupForm extends React.Component {
             email: '',
             timezone: '',
             errors: {},
-            isLoading: false
+            isLoading: false,
+            formInvalid: false
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.checkUserExists = this.checkUserExists.bind(this);
     }
 
     isValid() {
@@ -30,6 +32,30 @@ class SignupForm extends React.Component {
             console.log('not valid on client side');
         }
         return isValid;
+    }
+
+    checkUserExists(e) {
+        const field = e.target.name;
+        const val = e.target.value;
+        console.log('in checkUserExists event handler');
+        let errors = this.state.errors;
+        if (val !== '') {
+            console.log(this.props);
+            this.props.isUserExists(val).then(res => {
+                if (res.data.user) {
+                    errors[field] = 'Есть пользователь с таким ' + field;
+                    this.setState({formInvalid: true});
+                } else {
+                    errors[field] = '';
+                    this.setState({formInvalid: false});
+                }
+                this.setState({errors});
+            });
+        } 
+        // else {
+        //     errors[field] = '';
+        //     this.setState({errors});
+        // }
     }
 
     onChange(e) {
@@ -66,6 +92,7 @@ class SignupForm extends React.Component {
                         error = {errors.username}
                         label = "Имя пользователя"
                         onChange = {this.onChange}
+                        checkUserExists = {this.checkUserExists}
                         value = {this.state.username}
                         field = "username"
                         autoComplete = "username"
@@ -74,6 +101,7 @@ class SignupForm extends React.Component {
                         error = {errors.email}
                         label = "Email"
                         onChange = {this.onChange}
+                        checkUserExists = {this.checkUserExists}
                         value = {this.state.email}
                         field = "email"
                         autoComplete = "email"
@@ -108,7 +136,7 @@ class SignupForm extends React.Component {
                     
                    
                <div className="form-group">
-               <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Зарегистрироваться</button>
+               <button disabled={this.state.isLoading || this.state.formInvalid} className="btn btn-primary btn-lg">Зарегистрироваться</button>
                </div>
            </form>
         );
@@ -117,7 +145,8 @@ class SignupForm extends React.Component {
 
 SignupForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired,
-    addFlashMessage: PropTypes.func.isRequired
+    addFlashMessage: PropTypes.func.isRequired,
+    isUserExists: PropTypes.func.isRequired
 }
 
 export default SignupForm;
