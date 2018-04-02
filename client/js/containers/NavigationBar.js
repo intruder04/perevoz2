@@ -17,6 +17,9 @@ export default () => {
       <li className="nav-item">
         <Link to="/signup" className="navbar-brand">Signup</Link>
       </li>
+      <li className="nav-item">
+        <Link to="/login" className="navbar-brand">Войти</Link>
+      </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown

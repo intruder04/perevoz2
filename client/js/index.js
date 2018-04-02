@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './components/App'
 import Greetings from './components/Greetings'
 import Signup from './components/signup/Signup'
+import Login from './components/login/Login'
 import rootReducer from './rootReducer';
 
 const store = createStore(
@@ -26,6 +27,7 @@ render (
         <Switch>
           <Route exact path='/' component={Greetings} />
           <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
         </Switch>
       </App>
     </Router>
