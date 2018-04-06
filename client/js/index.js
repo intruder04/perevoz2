@@ -9,6 +9,9 @@ import Greetings from './components/Greetings'
 import Signup from './components/signup/Signup'
 import Login from './components/login/Login'
 import rootReducer from './rootReducer';
+import setAuthorizationToken from '../utils/setAuthorizationToken';
+import { setCurrentUser } from './actions/authActions';
+import jwt from 'jsonwebtoken';
 
 const store = createStore(
   rootReducer,
@@ -16,9 +19,12 @@ const store = createStore(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
-  
 );
 
+if (localStorage.jwtToken) {
+  setAuthorizationToken(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+}
 
 render (
   <Provider store={store}>
