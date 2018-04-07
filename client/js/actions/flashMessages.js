@@ -1,5 +1,5 @@
-import {ADD_FLASH_MESSAGE} from './types';
-import {DELETE_FLASH_MESSAGE} from './types';
+import { ADD_FLASH_MESSAGE } from './types';
+import { DELETE_FLASH_MESSAGE } from './types';
 
 export function addFlashMessage(message) {
     return {
