@@ -1,6 +1,5 @@
 import React from 'react';
 import NavigationBar from '../containers/NavigationBar';
-import {hot} from 'react-hot-loader';
 import FlashMessagesList from './flash/FlashMessagesList';
 
 
@@ -18,4 +17,4 @@ class App extends React.Component {
     }
 }
 
-export default hot(module)(App);
+export default App;

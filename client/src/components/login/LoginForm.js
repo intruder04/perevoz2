@@ -1,9 +1,27 @@
 import React from 'react';
 import TextFieldGroup from '../common/TextFieldGroup';
-import validateInput from '../../../../server/shared/validations/login';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/authActions';
+import Validator from 'validator';
+import isEmpty from 'lodash/isEmpty';
+
+function validateInput(data) {
+    let errors = {};
+
+    if (Validator.isEmpty(data.identifier)) {
+        errors.identifier = 'Это поле обязательно!'
+    }
+    if (Validator.isEmpty(data.password)) {
+        errors.password = 'Это поле обязательно!'
+    }
+
+    return {
+        errors,
+        isValid: isEmpty(errors)
+    }
+
+}
 
 
 class LoginForm extends React.Component {

@@ -41,11 +41,5 @@ render (
       </App>
     </Router>
   </Provider>,
-  document.getElementById('main')
+  document.getElementById('root')
 );
-
-// if (module.hot) {
-//   module.hot.accept(function() {
-//    console.log('Accepting the updated module!');
-//     })
-// }

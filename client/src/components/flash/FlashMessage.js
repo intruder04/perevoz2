@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import classnames from 'classnames';
 
 class FlashMessage extends React.Component {
@@ -15,7 +14,7 @@ class FlashMessage extends React.Component {
     }    
 
     render() {
-        const {id,type,text} = this.props.message;
+        const { type,text } = this.props.message;
         return (
             <div className={classnames('alert', {
                 'alert-success': type === 'success',
