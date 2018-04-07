@@ -8,6 +8,7 @@ import App from './components/App';
 import Greetings from './components/Greetings';
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
+import Calls from './components/calls/Calls';
 import NewEvent from './components/events/NewEvent';
 import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
@@ -37,6 +38,7 @@ render (
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/new-event" component={requireAuth(NewEvent)} />
+          <Route path="/calls" component={requireAuth(Calls)} />
         </Switch>
       </App>
     </Router>

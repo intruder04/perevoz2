@@ -1,5 +1,5 @@
 import express from 'express';
-import commonValidations from '../shared/validations/signup';
+import commonValidations from '../validations/signup';
 import bcrypt from 'bcrypt';
 import isEmpty from 'lodash/isEmpty';
 
