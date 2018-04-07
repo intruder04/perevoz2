@@ -10,9 +10,10 @@ import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
 import NewEvent from './components/events/NewEvent';
 import rootReducer from './rootReducer';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
+import setAuthorizationToken from './utils/setAuthorizationToken';
 import { setCurrentUser } from './actions/authActions';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
+import requireAuth from './utils/requireAuth';
 
 const store = createStore(
   rootReducer,
@@ -24,7 +25,7 @@ const store = createStore(
 
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);
-  store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
 }
 
 render (
@@ -35,7 +36,7 @@ render (
           <Route exact path='/' component={Greetings} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/new-event" component={NewEvent} />
+          <Route path="/new-event" component={requireAuth(NewEvent)} />
         </Switch>
       </App>
     </Router>

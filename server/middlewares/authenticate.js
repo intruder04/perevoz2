@@ -17,6 +17,8 @@ export default (req, res, next) => {
                     error: 'Failed to authenticate'
                 });
             } else {
+                // req.userId = decoded.id;
+                // next();
                 User.query({
                     where: { id: decoded.id },
                     select: ['id', 'email', 'username']
@@ -25,9 +27,10 @@ export default (req, res, next) => {
                         res.status(404).json({
                             error: 'No such user'
                         });
+                    } else {
+                        req.currentUser = user;
+                        next();
                     }
-                    req.currentUser = user;
-                    next();
                 });
             }
         });

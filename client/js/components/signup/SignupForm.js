@@ -52,10 +52,6 @@ class SignupForm extends React.Component {
                 this.setState({errors});
             });
         } 
-        // else {
-        //     errors[field] = '';
-        //     this.setState({errors});
-        // }
     }
 
     onChange(e) {
@@ -74,7 +70,7 @@ class SignupForm extends React.Component {
                     console.log(this.props);
                     this.props.history.push('/');
                 },
-                () => this.setState({isLoading: false})
+                (err) => this.setState({ errors: err.response.data, isLoading: false})
             );
             console.log(this.state);
         }
