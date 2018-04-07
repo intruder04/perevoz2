@@ -4,10 +4,11 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import App from './components/App'
-import Greetings from './components/Greetings'
-import Signup from './components/signup/Signup'
-import Login from './components/login/Login'
+import App from './components/App';
+import Greetings from './components/Greetings';
+import Signup from './components/signup/Signup';
+import Login from './components/login/Login';
+import NewEvent from './components/events/NewEvent';
 import rootReducer from './rootReducer';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import { setCurrentUser } from './actions/authActions';
@@ -34,6 +35,7 @@ render (
           <Route exact path='/' component={Greetings} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/new-event" component={NewEvent} />
         </Switch>
       </App>
     </Router>
