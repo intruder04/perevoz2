@@ -6,32 +6,25 @@ import { connect } from 'react-redux';
 
 
 class CallsGrid extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         callsData: []
-    //     };
-    //     // this.onChange = this.onChange.bind(this);
-    //     // this.onSubmit = this.onSubmit.bind(this);
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            callsData: []
+        };
+        // this.onChange = this.onChange.bind(this);
+        // this.onSubmit = this.onSubmit.bind(this);
+    }
       
     componentDidMount() {
         this.props.getCalls();
-        // axios.get('/api/calls').then(
-        //     (res) => this.setState({ callsData: res.data.user })
-        // );
     }
 
     render() {
-        // const { callsData } = this.state;
-        // if (!this.state.callsData) {
-        //     return <div>Загрузка</div>;
-        // }
+        if (!this.props.calls) {
+            return <div>Загрузка</div>;
+        }
 
         return (
-            // <div>
-            // {this.props.calls}
-            // </div>
             <BootstrapTable data={this.props.calls} version='4'>
                 <TableHeaderColumn isKey dataField='id'>Product ID</TableHeaderColumn>
                 <TableHeaderColumn dataField='username'>Product Name</TableHeaderColumn>

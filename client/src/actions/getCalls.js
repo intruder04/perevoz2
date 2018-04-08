@@ -1,13 +1,6 @@
 import axios from 'axios';
 import { SET_CALLS } from './types';
 
-// export function fetchCalls() {
-//     return dispatch => {
-//         console.log('in getCalls action');
-//         return axios.get('/api/calls');
-//     }
-// }
-
 
 export function setCalls(calls) {
   return {
@@ -26,4 +19,3 @@ export function getCalls() {
     });
   }
 }
-// .then(data => dispatch(setCalls(data.calls)));
