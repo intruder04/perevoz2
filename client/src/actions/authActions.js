@@ -17,8 +17,8 @@ export function login(data) {
         return axios.post('/api/auth', data).then(res => {
             const token = res.data.token;
             localStorage.setItem('jwtToken', token);
-            setAuthorizationToken(token);
-            dispatch(setCurrentUser(jwtDecode(token)));
+            setAuthorizationToken(token); //axios headers
+            dispatch(setCurrentUser(jwtDecode(token))); //save user in redux store
         });
     }
 }

@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 
 
 class CallsGrid extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            callsData: []
-        };
-        // this.onChange = this.onChange.bind(this);
-        // this.onSubmit = this.onSubmit.bind(this);
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         callsData: []
+    //     };
+    //     // this.onChange = this.onChange.bind(this);
+    //     // this.onSubmit = this.onSubmit.bind(this);
+    // }
       
     componentDidMount() {
         this.props.getCalls();
