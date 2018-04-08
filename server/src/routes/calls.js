@@ -14,10 +14,10 @@ router.get('/', authenticate, (req, res) => { //check token
 
     User.query({
         select: ['id', 'username', 'email']
-    }).fetchAll().then(user => {
+    }).fetchAll().then(calls => {
         // console.log(user);
-        if (user) {
-            res.json({ user });
+        if (calls) {
+            res.json({ calls });
             // if (bcrypt.compareSync(password, user.get('password_digest'))) {
             //     const token = jwt.sign({
             //         id: user.get('id'),
