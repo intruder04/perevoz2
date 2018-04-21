@@ -8,9 +8,6 @@ class Calls extends React.Component {
                 <div className="col-md-4 col-md-offset-4"></div>
                 <h1>Hellod2</h1>
                 <CallsGrid history={this.props.history}/>
-                {/* <Calls 
-                    history={this.props.history}
-                /> */}
             </div>
         );
     }
