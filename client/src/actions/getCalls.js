@@ -1,21 +1,23 @@
 import axios from 'axios';
-import { SET_CALLS } from './types';
+import { GET_CALLS } from './types';
 
 
-export function setCalls(calls) {
+export function getCalls(calls) {
   return {
-    type: SET_CALLS,
+    type: GET_CALLS,
     calls
   }
 }
 
-export function getCalls() {
+export function Calls() {
   return dispatch => {
     axios.get('/api/calls')
       .then(res => {
         const calls = res.data.calls;
-        console.log(calls);
-        dispatch(setCalls(calls));
+        console.log("calls from db ",calls);
+        dispatch(getCalls(calls));
+    }).catch(error => {
+      throw(error);
     });
   }
 }

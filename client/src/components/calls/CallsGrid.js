@@ -1,6 +1,6 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import { getCalls } from '../../actions/getCalls';
+import { Calls } from '../../actions/getCalls';
 // import axios from 'axios';
 import { connect } from 'react-redux';
 
@@ -14,9 +14,11 @@ class CallsGrid extends React.Component {
     //     // this.onChange = this.onChange.bind(this);
     //     // this.onSubmit = this.onSubmit.bind(this);
     // }
-      
-    componentDidMount() {
-        this.props.getCalls();
+
+
+    componentWillMount() {
+        console.log("in mount");
+        this.props.Calls();
     }
 
     render() {
@@ -25,7 +27,7 @@ class CallsGrid extends React.Component {
         }
 
         return (
-            <BootstrapTable data={this.props.calls} version='4'>
+             <BootstrapTable data={this.props.calls} version='4'>
                 <TableHeaderColumn isKey dataField='id'>Product ID</TableHeaderColumn>
                 <TableHeaderColumn dataField='username'>Product Name</TableHeaderColumn>
                 <TableHeaderColumn dataField='email'>Product Price</TableHeaderColumn>
@@ -41,4 +43,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getCalls})(CallsGrid);
+export default connect(mapStateToProps, {Calls})(CallsGrid);

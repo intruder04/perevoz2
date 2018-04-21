@@ -6,7 +6,7 @@ class Calls extends React.Component {
         return (
             <div className="row">
                 <div className="col-md-4 col-md-offset-4"></div>
-                <h1>Hello22</h1>
+                <h1>Hellod2</h1>
                 <CallsGrid history={this.props.history}/>
                 {/* <Calls 
                     history={this.props.history}
