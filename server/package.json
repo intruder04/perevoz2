@@ -14,7 +14,7 @@
     "babel-polyfill": "^6.9.1",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.9.0",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.2",
     "bookshelf": "^0.13.0",
     "cross-env": "^1.0.8",
