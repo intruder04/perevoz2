@@ -23,7 +23,7 @@
     "jsonwebtoken": "^8.2.1",
     "knex": "^0.14.4",
     "node-libs-browser": "^1.0.0",
-    "node-sass": "^3.8.0",
+    "node-sass": "^4.13.1",
     "pg": "^7.4.1",
     "prop-types": "^15.6.1",
     "redux": "^3.5.2",
