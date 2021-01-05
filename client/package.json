@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "ajv": "^6.10.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.5",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.5",
